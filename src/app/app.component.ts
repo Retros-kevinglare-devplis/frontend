@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BaseComponent } from './shared/components/base/base.component';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'retros';
+export class AppComponent extends BaseComponent {
+  title = 'Retros';
 }

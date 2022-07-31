@@ -1,3 +1,11 @@
-<H1>app component</H1>
+<mat-toolbar>
+  <div class="title">
+    <a *ngIf="isAuth" mat-icon-button>
+      <mat-icon>face</mat-icon>
+    </a>
+    <a *ngIf="!isAuth" class="accent-color">Sign In</a>
+    <span> {{title}}</span>
+  </div>
+</mat-toolbar>
 <a routerLink="retros/12">Link</a>
 <router-outlet></router-outlet>

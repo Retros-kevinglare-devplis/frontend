@@ -4,12 +4,12 @@ import { BaseComponent } from '../../shared/components/base/base.component';
 import { BehaviorSubject, filter, map, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-retros',
-  templateUrl: './retros.component.html',
-  styleUrls: ['./retros.component.scss'],
+  selector: 'app-retro',
+  templateUrl: './retro.component.html',
+  styleUrls: ['./retro.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RetrosComponent extends BaseComponent implements OnInit {
+export class RetroComponent extends BaseComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     super();
   }

@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+$palette: mat.define-palette(mat.$green-palette);
+$palette-shadow: mat.define-palette(mat.$grey-palette);
+$color-accent: mat.get-color-from-palette($palette, 'default');
+$color-accent-hover: mat.get-color-from-palette($palette, 600);
+$color-shadows: mat.get-color-from-palette($palette-shadow, 300);
+
+$font-size-small: .5rem;
+$font-size-medium: 1rem;
+$font-size-large: 2rem;
+
+$shadow-size-small: $font-size-small;
+$shadow-size-medium: $font-size-medium;
+$shadow-size-large: $font-size-large;
+
+$margin-x-small: $font-size-small * 2;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-toolbar {
+  background-color: transparent;
+  box-shadow: 0px 0px $shadow-size-medium $color-shadows;
+  margin-bottom: $margin-x-small;
+}
+
+
+a {
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: $color-accent;
+  color: $color-accent !important;
+  text-decoration: none;
+  &:hover {
+    color: $color-accent-hover !important;
+    border-bottom-color: $color-accent-hover;
+    cursor: pointer;
+  }
+}
