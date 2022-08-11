@@ -9,6 +9,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./modules/retro/retro.module').then((module) => module.RetroModule),
   },
+  {
+    path: RouterPath.SignUp,
+    loadChildren: () =>
+      import('./shared/components/sign-up/sign-up.module').then((module) => module.SignUpModule),
+  },
   { path: '', pathMatch: 'full', redirectTo: '' },
   { path: '**', redirectTo: '' },
 ];

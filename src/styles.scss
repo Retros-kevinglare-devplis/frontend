@@ -18,7 +18,7 @@ $shadow-size-large: $font-size-large;
 $margin-x-small: $font-size-small * 2;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, 'Helvetica Neue', sans-serif; }
 
 .mat-toolbar {
   background-color: transparent;
@@ -37,5 +37,16 @@ a {
     color: $color-accent-hover !important;
     border-bottom-color: $color-accent-hover;
     cursor: pointer;
+  }
+}
+
+.mat-form-field-appearance-fill {
+  .mat-form-field-flex {
+    background-color: transparent;
+  }
+
+  .mat-form-field-subscript-wrapper,
+  .mat-form-field-flex {
+    padding: 0 !important;
   }
 }
