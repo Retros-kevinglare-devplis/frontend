@@ -3,16 +3,20 @@ import { SignUpFormService } from './services/sign-up-form.service';
 import { FormGroup } from '@angular/forms';
 import { SignUpModel } from './models/sign-up.model';
 import { combineLatestWith, Subject, takeUntil, tap } from 'rxjs';
+import { SignUpDatasourceService } from './services/sign-up-datasource.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  providers: [SignUpFormService],
+  providers: [SignUpFormService, SignUpDatasourceService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-  constructor(private formService: SignUpFormService) {
+  constructor(
+    private formService: SignUpFormService,
+    private api: SignUpDatasourceService,
+  ) {
     this.form = this.formService.create();
   }
 
@@ -42,6 +46,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe$),
       )
       .subscribe();
+  }
+
+  signUp(): void {
+    const isValidSignUpForm = this.form.valid;
+    if (isValidSignUpForm) {
+      this.api.signUp(this.form).subscribe((a) => console.log(a));
+    }
   }
 
   ngOnDestroy() {

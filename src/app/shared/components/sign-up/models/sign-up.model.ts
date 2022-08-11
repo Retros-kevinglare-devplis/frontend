@@ -7,5 +7,6 @@ export class SignUpModel {
     public lastName: FormControl<string | null>,
     public password: FormControl<string | null>,
     public confirmPassword: FormControl<string | null>,
+    public userName: FormControl<string | null>,
   ) {}
 }

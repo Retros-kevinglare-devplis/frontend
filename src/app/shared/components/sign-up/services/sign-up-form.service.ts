@@ -12,6 +12,7 @@ export class SignUpFormService {
         new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Zа-яА-я]+$')]),
         new FormControl(null, [Validators.required]),
         new FormControl(null, [Validators.required]),
+        new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9_]+$')]),
       ),
     );
   }
