@@ -28,16 +28,7 @@ body { margin: 0; font-family: Roboto, 'Helvetica Neue', sans-serif; }
 
 
 a {
-  border-bottom-width: 1px;
-  border-bottom-style: dashed;
-  border-bottom-color: $color-accent;
-  color: $color-accent !important;
   text-decoration: none;
-  &:hover {
-    color: $color-accent-hover !important;
-    border-bottom-color: $color-accent-hover;
-    cursor: pointer;
-  }
 }
 
 .mat-form-field-appearance-fill {

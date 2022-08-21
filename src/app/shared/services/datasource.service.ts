@@ -5,7 +5,7 @@ import { EMPTY, Observable } from 'rxjs';
 
 @Injectable()
 export class DatasourceService {
-  constructor(private notification: NotificationService) { }
+  constructor(private notification: NotificationService) {}
 
   catchError(error: any): Observable<never> {
     this.notification.push(new ErrorNotification(error.error));

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseComponent } from './shared/components/base/base.component';
-import { StorageService } from './shared/services/storage.service';
+import { NotificationService } from './shared/services/notification.service';
+import { RouterPath } from './core/constants/router-path.enum';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,11 @@ import { StorageService } from './shared/services/storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent extends BaseComponent {
-  constructor(public storage: StorageService) {
+  constructor(public notification: NotificationService) {
     super();
   }
 
   title = 'Retros';
+
+  routerLinks = RouterPath;
 }

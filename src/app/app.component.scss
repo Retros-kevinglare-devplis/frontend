@@ -1,9 +1,15 @@
-.title {
-  display: flex;
-  align-items: center;
-  flex: 1 1 auto;
+:host {
+  .title {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
 
-  span {
-    margin-left: 4px;
+    span {
+      margin-left: 4px;
+    }
+  }
+  .navbar {
+    border-bottom: 1px solid rgba(0,0,0, .15);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.2);
   }
 }

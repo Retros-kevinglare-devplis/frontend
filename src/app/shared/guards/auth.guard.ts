@@ -5,7 +5,9 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  constructor(private auth: AuthService) {}
+
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return AuthService.isAuth ?? false;
+    return !!this.auth.auth ?? false;
   }
 }

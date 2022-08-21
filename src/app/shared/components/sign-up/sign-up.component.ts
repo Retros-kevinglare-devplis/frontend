@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { SignUpModel } from './models/sign-up.model';
 import { combineLatestWith, Subject, takeUntil, tap } from 'rxjs';
 import { SignUpDatasourceService } from './services/sign-up-datasource.service';
-import { StorageService } from '../../services/storage.service';
+import { RouterPath } from '../../../core/constants/router-path.enum';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,17 +14,15 @@ import { StorageService } from '../../services/storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-  constructor(
-    private formService: SignUpFormService,
-    private api: SignUpDatasourceService,
-    private storage: StorageService,
-  ) {
+  constructor(private formService: SignUpFormService, private api: SignUpDatasourceService) {
     this.form = this.formService.create();
   }
 
   private ngUnsubscribe$ = new Subject<void>();
 
-  title = 'Sign up';
+  title = 'Sign Up';
+
+  routerLinks = RouterPath;
 
   form: FormGroup<SignUpModel>;
 

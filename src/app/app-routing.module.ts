@@ -10,6 +10,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/retro/retro.module').then((module) => module.RetroModule),
   },
   {
+    path: RouterPath.SignIn,
+    loadChildren: () =>
+      import('./shared/components/sign-in/sign-in.module').then((module) => module.SignInModule),
+  },
+  {
     path: RouterPath.SignUp,
     loadChildren: () =>
       import('./shared/components/sign-up/sign-up.module').then((module) => module.SignUpModule),

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from './storage.service';
 import { Notification } from '../../core/constants/notification.type';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class NotificationService {
-  constructor(private storage: StorageService) { }
+  private _notification$ = new Subject<Notification>();
 
   push(notification: Notification) {
-    this.storage.notification$.next(notification);
+    this._notification$.next(notification);
+  }
+
+  pull(): Subject<Notification> {
+    return this._notification$;
   }
 }
