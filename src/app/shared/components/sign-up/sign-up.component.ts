@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { SignUpModel } from './models/sign-up.model';
 import { combineLatestWith, Subject, takeUntil, tap } from 'rxjs';
 import { SignUpDatasourceService } from './services/sign-up-datasource.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +17,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   constructor(
     private formService: SignUpFormService,
     private api: SignUpDatasourceService,
+    private storage: StorageService,
   ) {
     this.form = this.formService.create();
   }
@@ -51,7 +53,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   signUp(): void {
     const isValidSignUpForm = this.form.valid;
     if (isValidSignUpForm) {
-      this.api.signUp(this.form).subscribe((a) => console.log(a));
+      this.api.signUp(this.form).subscribe();
     }
   }
 

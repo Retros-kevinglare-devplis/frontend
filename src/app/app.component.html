@@ -4,3 +4,6 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
+<app-notification
+  [notification]="storage.notification$ | async"
+></app-notification>

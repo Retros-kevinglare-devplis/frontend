@@ -10,6 +10,8 @@ import { SignUpModule } from './shared/components/sign-up/sign-up.module';
 import { FingerprintService } from './shared/services/fingerprint.service';
 import { StorageService } from './shared/services/storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificationModule } from './shared/components/notification/notification.module';
+import { NotificationService } from './shared/services/notification.service';
 
 export function initFingerPrint(fingerprintService: FingerprintService) {
   return () => fingerprintService.init();
@@ -20,6 +22,7 @@ export function initFingerPrint(fingerprintService: FingerprintService) {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NotificationModule,
     BrowserAnimationsModule,
     HttpClientModule,
     SignUpModule,
@@ -29,6 +32,7 @@ export function initFingerPrint(fingerprintService: FingerprintService) {
     AuthService,
     StorageService,
     FingerprintService,
+    NotificationService,
     {
       provide: APP_INITIALIZER,
       useFactory: initFingerPrint,
