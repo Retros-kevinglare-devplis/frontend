@@ -19,15 +19,13 @@ describe('AppComponent', () => {
   it(`should have as title 'retros'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('retros');
+    expect(app.title).toEqual('retro');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'retros app is running!',
-    );
+    expect(compiled.querySelector('.content span')?.textContent).toContain('retro app is running!');
   });
 });

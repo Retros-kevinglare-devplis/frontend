@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-sm-12 col-md-6 my-5">
+      <div class="row">
+        <div class="col-12 fs-5">
+          <ng-container
+            *ngIf="
+              form.get('firstName')?.value &&
+              !form.get('firstName')?.errors;
+              else titleComponent"
+          >
+            Hey,
+            <span class="text-capitalize">{{form.get('firstName')?.value}}</span>
+          </ng-container>
+        </div>
+        <form [formGroup]="form">
+          <div class="row my-5">
+            <div class="col-sm-12">
+              <mat-form-field class="w-100 my-2" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput formControlName="username" placeholder="Your login">
+                <mat-error
+                  *ngIf="form.get('username')?.hasError('required')"
+                >
+                  Username is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="form.get('username')?.hasError('pattern')"
+                >
+                  Only <strong>A-Z 0-9 _</strong> characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12">
+              <mat-form-field class="w-100 my-2" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                <mat-error
+                  *ngIf="
+                  form.get('email')?.hasError('email') &&
+                  !form.get('email')?.hasError('required')
+                "
+                >
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error
+                  *ngIf="form.get('email')?.hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="w-100 my-2" appearance="fill">
+                  <mat-label>Firstname</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="firstName"
+                    placeholder="Your name"
+                    maxlength="35"
+                  >
+                  <mat-error
+                    *ngIf="form.get('firstName')?.hasError('required')"
+                  >
+                    Firstname is <strong>required</strong>
+                  </mat-error>
+                  <mat-error
+                    *ngIf="form.get('firstName')?.hasError('pattern')"
+                  >
+                    Only <strong>A-Z А-Я</strong> characters
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <mat-form-field class="w-100 my-2" appearance="fill">
+                <mat-label>Lastname</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="lastName"
+                  placeholder="Your lastname"
+                  maxlength="35"
+                >
+                <mat-error
+                  *ngIf="form.get('lastName')?.hasError('required')"
+                >
+                  Lastname is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="form.get('lastName')?.hasError('pattern')"
+                >
+                  Only <strong>A-Z А-Я</strong> characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <mat-form-field class="w-100 my-2" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  placeholder="Your password"
+                  maxlength="35"
+                >
+                <mat-error
+                  *ngIf="form.get('password')?.hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <mat-form-field class="w-100 my-2" appearance="fill">
+                <mat-label>Password again</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="confirmPassword"
+                  placeholder="Your password again"
+                  maxlength="35"
+                >
+                <mat-error
+                  *ngIf="form.get('confirmPassword')?.hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="form.get('confirmPassword')?.hasError('match')"
+                >
+                  Passwords are <strong>different</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 mt-5 text-end">
+              <button
+                type="submit"
+                class="btn btn-outline-primary"
+                (click)="signUp()"
+              >
+                Let's do it!
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<ng-template #titleComponent>
+  {{title}} /
+  <a class="text-primary" [routerLink]="'../' + routerLinks.SignIn">Sign In</a>
+</ng-template>

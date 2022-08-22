@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RetrosComponent } from './retros.component';
+import { RetroComponent } from './retro.component';
 
 describe('RetrosComponent', () => {
-  let component: RetrosComponent;
-  let fixture: ComponentFixture<RetrosComponent>;
+  let component: RetroComponent;
+  let fixture: ComponentFixture<RetroComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RetrosComponent],
+      declarations: [RetroComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RetrosComponent);
+    fixture = TestBed.createComponent(RetroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

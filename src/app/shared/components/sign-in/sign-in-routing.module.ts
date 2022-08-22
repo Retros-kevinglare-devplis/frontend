@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RetrosComponent } from './retros.component';
+import { SignInComponent } from './sign-in.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RetrosComponent,
+    component: SignInComponent,
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class RetrosRoutingModule {}
+export class SignInRoutingModule {}
