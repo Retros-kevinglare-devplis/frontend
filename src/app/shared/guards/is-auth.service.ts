@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class IsAuth implements CanActivate {
   constructor(private auth: AuthService) {}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return !!this.auth.auth ?? false;
+    return !!this.auth.token;
   }
 }

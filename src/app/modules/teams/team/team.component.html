@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-md-8 align-self-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a class="link-primary" (click)="goToHome()">Home</a></li>
+          <li class="breadcrumb-item"><a class="link-primary" (click)="goToTeams()">{{title}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{teamId}}</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-md-4 text-end">
+      <button
+        type="button"
+        class="btn btn-outline-danger mx-3"
+        (click)="removeTeam()"
+      >
+        <i class="bi bi-trash3"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BaseComponent } from './shared/components/base/base.component';
 import { NotificationService } from './shared/services/notification.service';
 import { RouterPath } from './core/constants/router-path.enum';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,21 @@ import { RouterPath } from './core/constants/router-path.enum';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent extends BaseComponent {
-  constructor(public notification: NotificationService) {
+export class AppComponent extends BaseComponent implements OnInit {
+  constructor(public notification: NotificationService, private auth: AuthService) {
     super();
+    this.title = 'Retros';
   }
 
-  title = 'Retros';
+  isAuth = false;
 
   routerLinks = RouterPath;
+
+  ngOnInit() {
+    this.isAuth = !!this.auth.token;
+  }
+
+  logout(): void {
+    this.auth.logout();
+  }
 }

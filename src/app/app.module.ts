@@ -4,14 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthGuard } from './shared/guards/auth.guard';
+import { IsAuth } from './shared/guards/is-auth.service';
 import { AuthService } from './shared/services/auth.service';
 import { SignUpModule } from './shared/components/sign-up/sign-up.module';
 import { FingerprintService } from './shared/services/fingerprint.service';
 import { StorageService } from './shared/services/storage.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NotificationModule } from './shared/components/notification/notification.module';
 import { NotificationService } from './shared/services/notification.service';
+import { IsNotAuth } from './shared/guards/is-not-auth.service';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 export function initFingerPrint(fingerprintService: FingerprintService) {
   return () => fingerprintService.init();
@@ -28,8 +31,11 @@ export function initFingerPrint(fingerprintService: FingerprintService) {
     SignUpModule,
   ],
   providers: [
-    AuthGuard,
+    IsAuth,
+    IsNotAuth,
     AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     StorageService,
     FingerprintService,
     NotificationService,

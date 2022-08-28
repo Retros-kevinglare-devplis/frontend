@@ -5,7 +5,6 @@ import { SignUpRoutingModule } from './sign-up-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { DatasourceService } from '../../services/datasource.service';
 
 @NgModule({
   declarations: [SignUpComponent],
@@ -15,7 +14,6 @@ import { DatasourceService } from '../../services/datasource.service';
     MatInputModule,
     ReactiveFormsModule,
     SignUpRoutingModule,
-  ],
-  providers: [DatasourceService],
+  ]
 })
 export class SignUpModule {}

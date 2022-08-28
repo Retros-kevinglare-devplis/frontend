@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthTokenKey } from '../../core/constants/tokens';
+import { RouterPath } from '../../core/constants/router-path.enum';
 
 @Injectable()
 export class AuthService {
-  constructor(private router: Router) {}
-
-  get auth(): string {
+  get token(): string {
     return localStorage.getItem(AuthTokenKey) || '';
   }
 
-  set auth(value: string) {
+  set token(value: string) {
     localStorage.setItem(AuthTokenKey, value);
-    this.router.navigate(['/']);
+    window.location.reload();
+  }
+
+  logout(): void {
+    localStorage.removeItem(AuthTokenKey);
+    window.location.href = RouterPath.SignIn;
   }
 }

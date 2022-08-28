@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-md-8 align-self-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a class="link-primary" (click)="goBack()">Home</a></li>
+          <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-md-4 text-end">
+      <button type="button" class="btn btn-primary">Create team</button>
+    </div>
+  </div>
+  <div class="row gx-3 gy-3">
+    <div class="col-md-6 col-lg-4 col-sm-12" *ngFor="let team of repo.teams$ | async">
+      <a class="card" [routerLink]="team.id">
+        <div class="card-body">
+          <h3 class="card-title text-capitalize">{{team.title}}</h3>
+          <p class="card-text">
+            <small class="text-muted">Updated: {{team.updatedAt | date: 'medium'}}</small>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

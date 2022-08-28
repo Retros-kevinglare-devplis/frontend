@@ -17,10 +17,9 @@ import { BaseComponent } from '../base/base.component';
 export class SignUpComponent extends BaseComponent implements OnInit {
   constructor(private formService: SignUpFormService, private api: SignUpDatasourceService) {
     super();
+    this.title = 'Sign Up';
     this.form = this.formService.create();
   }
-
-  title = 'Sign Up';
 
   routerLinks = RouterPath;
 
