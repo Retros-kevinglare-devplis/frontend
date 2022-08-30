@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { TeamModel } from '../team/models/team.model';
 import { TeamsDatasourceService } from './teams-datasource.service';
 import { BaseComponent } from '../../../shared/components/base/base.component';
-import { BehaviorSubject, switchMap, takeUntil } from 'rxjs';
+import { BehaviorSubject, takeUntil } from 'rxjs';
 import { ITeam } from '../team/interfaces/team.interface';
 import { IResponseData } from '../../../shared/interfaces/api.interface';
+import { Team } from '../../../shared/models/team';
 
 @Injectable()
 export class TeamsRepositoryService extends BaseComponent {
@@ -13,7 +13,7 @@ export class TeamsRepositoryService extends BaseComponent {
     this.create();
   }
 
-  public teams$ = new BehaviorSubject<TeamModel[]>([]);
+  public teams$ = new BehaviorSubject<Team[]>([]);
 
   private create() {
     this.datasource
@@ -27,9 +27,9 @@ export class TeamsRepositoryService extends BaseComponent {
   }
 
   private refresh(data: IResponseData<ITeam>[]) {
-    const loadTeams: TeamModel[] = data.map(
+    const loadTeams: Team[] = data.map(
       (team) =>
-        new TeamModel(
+        new Team(
           team.id,
           team.attributes.title,
           team.attributes.createdAt,

@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { filter, takeUntil, tap } from 'rxjs';
+import { filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '../../../shared/components/base/base.component';
 import { RouterPath } from '../../../core/constants/router-path.enum';
 import { TeamDatasourceService } from './services/team-datasource.service';
+import { TeamRepositoryService } from './services/team-repository.service';
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
-  providers: [TeamDatasourceService],
+  providers: [TeamDatasourceService, TeamRepositoryService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamComponent extends BaseComponent {
@@ -18,6 +19,7 @@ export class TeamComponent extends BaseComponent {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    public repo: TeamRepositoryService,
     private datasource: TeamDatasourceService,
   ) {
     super();
@@ -55,6 +57,10 @@ export class TeamComponent extends BaseComponent {
         filter((param) => param && param['id']),
         tap((param) => {
           this.teamId = param['id'];
+        }),
+        switchMap(() => this.repo.get(this.teamId)),
+        tap((jsonResponse) => {
+          this.repo.init(jsonResponse);
         }),
         takeUntil(this.ngUnsubscribe$),
       )

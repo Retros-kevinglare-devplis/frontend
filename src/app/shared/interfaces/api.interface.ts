@@ -12,10 +12,17 @@ export interface IResponseData<T> {
   id: string;
   type: ResponseType;
   attributes: T;
+  relationships: { [key: string]: any };
+  included: any;
 }
 
 export enum ResponseError {
   Unauthorized = 401,
 }
 
-type ResponseType = 'team' | 'user' | 'retro' | 'invite';
+export enum Type {
+  Collaborator = 'collaborator',
+  User = 'user',
+}
+
+type ResponseType = 'team' | 'user' | 'retros' | 'invites' | 'components' | 'collaborator';

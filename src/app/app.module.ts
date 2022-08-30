@@ -15,6 +15,7 @@ import { NotificationService } from './shared/services/notification.service';
 import { IsNotAuth } from './shared/guards/is-not-auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 export function initFingerPrint(fingerprintService: FingerprintService) {
   return () => fingerprintService.init();
@@ -29,6 +30,7 @@ export function initFingerPrint(fingerprintService: FingerprintService) {
     BrowserAnimationsModule,
     HttpClientModule,
     SignUpModule,
+    LoadingBarHttpClientModule,
   ],
   providers: [
     IsAuth,

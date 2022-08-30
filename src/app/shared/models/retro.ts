@@ -1,8 +1,10 @@
-export class TeamModel {
+import { Team } from './team';
+
+export class Retro {
   constructor(
     public id: string,
-    public title: string,
     public createdAt: Date,
     public updatedAt: Date,
+    public team: Team,
   ) {}
 }

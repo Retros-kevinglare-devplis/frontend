@@ -5,7 +5,12 @@
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item"><a class="link-primary" (click)="goToHome()">Home</a></li>
           <li class="breadcrumb-item"><a class="link-primary" (click)="goToTeams()">{{title}}</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{teamId}}</li>
+          <li
+            class="breadcrumb-item active text-capitalize"
+            aria-current="page"
+          >
+              {{ (repo.team$ | async)?.title || 'Loading..' }}
+          </li>
         </ol>
       </nav>
     </div>
