@@ -68,6 +68,7 @@ export class TeamRepositoryService {
       const team = new Team(
         jsonResponse.data.id,
         jsonResponse.data.attributes.title,
+        jsonResponse.data.attributes.description,
         jsonResponse.data.attributes.createdAt,
         jsonResponse.data.attributes.updatedAt,
         this.getCollaboratorIncluded(jsonResponse),
