@@ -10,8 +10,8 @@ import { AuthService } from './shared/services/auth.service';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent extends BaseComponent implements OnInit {
-  constructor(public notification: NotificationService, private auth: AuthService) {
+export class AppComponent extends BaseComponent {
+  constructor(public notification: NotificationService, public auth: AuthService) {
     super();
     this.title = 'Retros';
   }

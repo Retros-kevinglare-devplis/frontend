@@ -16,9 +16,13 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent extends BaseComponent {
-  constructor(public formService: SignInFormService, private api: SignInDatasourceService, private router: Router) {
+  constructor(
+    public formService: SignInFormService,
+    private api: SignInDatasourceService,
+    private router: Router,
+  ) {
     super();
-    this.form = this.formService.create();
+    this.form = formService.create();
   }
 
   form: FormGroup<SignInModel>;
@@ -26,9 +30,14 @@ export class SignInComponent extends BaseComponent {
   routerLinks = RouterPath;
 
   signIn() {
-    const isValidSignInForm = this.form.valid;
-    if (isValidSignInForm) {
-      this.api.signIn(this.form).pipe(takeUntil(this.ngUnsubscribe$)).subscribe(() => this.router.navigate([this.routerLinks.Teams])); //FIXME: пытался сделать редирект на teams после авторизации
+    const isValidSignUpForm = this.form.valid;
+    if (isValidSignUpForm) {
+      this.api
+        .signIn(this.form)
+        .pipe(takeUntil(this.ngUnsubscribe$))
+        .subscribe(() => {
+          this.router.navigate(['/teams']);
+        });
     }
   }
 }

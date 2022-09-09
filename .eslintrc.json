@@ -53,10 +53,6 @@
       "rules": {
         "max-len": ["error", { "code": 140 }]
       }
-    },
-    {
-      "files": ["*.component.ts"],
-      "extends": ["plugin:@angular-eslint/template/process-inline-templates"]
     }
   ]
 }

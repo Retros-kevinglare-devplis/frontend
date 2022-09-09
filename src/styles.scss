@@ -20,3 +20,21 @@ a {
     padding: 0 !important;
   }
 }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: darkblue;
+  color: white;
+}
+
+.more-avatars {
+  div {
+    & > span {
+      border: 2px solid white;
+    }
+    &:not(:first-child) {
+      margin-left: -10px;
+    }
+  }
+}

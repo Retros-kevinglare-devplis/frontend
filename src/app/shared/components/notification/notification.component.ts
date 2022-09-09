@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorNotification } from '../../../core/entities/notification/notification.error.model';
 import { Notification } from '../../../core/constants/notification.type';
-import { Capitalize } from '../../../core/core.utils';
 import { NotificationErrorComponent } from './notification-error/notification-error.component';
 
 @Component({
@@ -30,7 +29,7 @@ export class NotificationComponent implements OnChanges {
       const errors = notification.error.error;
       Object.keys(errors).forEach((key) => {
         errors[key].forEach((error) => {
-          const errorMsg = `${Capitalize(key)}  ${error}`;
+          const errorMsg = `${key}  ${error}`;
           this.notifications.push(errorMsg);
         });
       });

@@ -16,6 +16,8 @@ import { IsNotAuth } from './shared/guards/is-not-auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { JsonApiModule } from 'angular2-jsonapi';
+import { DatastoreService } from './shared/services/datastore.service';
 
 export function initFingerPrint(fingerprintService: FingerprintService) {
   return () => fingerprintService.init();
@@ -31,16 +33,18 @@ export function initFingerPrint(fingerprintService: FingerprintService) {
     HttpClientModule,
     SignUpModule,
     LoadingBarHttpClientModule,
+    JsonApiModule,
   ],
   providers: [
     IsAuth,
     IsNotAuth,
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     StorageService,
     FingerprintService,
     NotificationService,
+    DatastoreService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {
       provide: APP_INITIALIZER,
       useFactory: initFingerPrint,

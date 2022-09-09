@@ -1,17 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { filter, switchMap, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '../../../shared/components/base/base.component';
 import { RouterPath } from '../../../core/constants/router-path.enum';
 import { TeamDatasourceService } from './services/team-datasource.service';
-import { TeamRepositoryService } from './services/team-repository.service';
+import { DatastoreService } from '../../../shared/services/datastore.service';
+import { Team } from '../../../shared/models/team';
+import { TeamFormService } from './services/team-form.service';
+
+const NewTeamIdentifier = 'new';
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
-  providers: [TeamDatasourceService, TeamRepositoryService],
+  providers: [TeamDatasourceService, TeamFormService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamComponent extends BaseComponent {
@@ -19,14 +23,21 @@ export class TeamComponent extends BaseComponent {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    public repo: TeamRepositoryService,
     private datasource: TeamDatasourceService,
+    private datastore: DatastoreService,
+    public formService: TeamFormService,
   ) {
     super();
     this.title = 'My Teams';
   }
 
-  teamId: string | undefined;
+  team$ = new BehaviorSubject<Team | undefined>(undefined);
+
+  teamId!: string;
+
+  isNewTeam$ = new BehaviorSubject(false);
+
+  newTeamName$ = new BehaviorSubject<string | null>(null);
 
   ngOnInit(): void {
     this.getTeamIdFromUrlParams();
@@ -51,16 +62,35 @@ export class TeamComponent extends BaseComponent {
     }
   }
 
+  changeTeamName(name: string) {
+    if (name) {
+      this.newTeamName$.next(name);
+    } else {
+      this.newTeamName$.next(null);
+    }
+  }
+
+  private onChangeTeamId(id: string): void {
+    if (id === NewTeamIdentifier) {
+      this.isNewTeam$.next(true);
+    } else {
+      this.isNewTeam$.next(false);
+    }
+  }
+
   private getTeamIdFromUrlParams(): void {
     this.route.params
       .pipe(
         filter((param) => param && param['id']),
         tap((param) => {
           this.teamId = param['id'];
+          this.onChangeTeamId(this.teamId);
         }),
-        switchMap(() => this.repo.get(this.teamId)),
-        tap((jsonResponse) => {
-          this.repo.init(jsonResponse);
+        filter(() => this.teamId !== NewTeamIdentifier),
+        switchMap(() => this.datastore.findRecord(Team, this.teamId)),
+        tap((data: Team) => {
+          this.team$.next(data);
+          this.formService.patch(data);
         }),
         takeUntil(this.ngUnsubscribe$),
       )

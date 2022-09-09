@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "qs"
+            ],
             "outputPath": "dist/retros",
             "index": "src/index.html",
             "main": "src/main.ts",

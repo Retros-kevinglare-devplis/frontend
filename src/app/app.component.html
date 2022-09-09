@@ -3,7 +3,7 @@
   height="4px"
   [includeSpinner]="false"
 ></ngx-loading-bar>
-<header id="header" class="header fixed-top">
+<header id="header" class="header">
   <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     <a href="/" class="logo d-flex align-items-center">
       <span><i class="bi bi-card-text px-2"></i> RetroSprint</span>
@@ -35,7 +35,7 @@
     </nav>
   </div>
 </header>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 <app-notification
   [notification]="notification.pull() | async"
 ></app-notification>

@@ -25,7 +25,8 @@ export class SignUpDatasourceService {
         filter((next) => next.data.attributes.accessToken),
         tap((next) => {
           this.auth.token = next.data.attributes.accessToken;
-          this.auth.username = next.included[0].attributes.username //FIXME: нужно править, прикрутичивать jsonapi парсер, не понятно, как в сторе хранить объект (сейчас там строка или null)
+          this.auth.refresh = next.data.attributes.refreshToken;
+          this.auth.username = next.included[0].attributes.username;
         }),
       );
   }

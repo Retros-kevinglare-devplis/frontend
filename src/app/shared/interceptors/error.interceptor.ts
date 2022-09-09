@@ -1,8 +1,8 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, EMPTY, Observable, throwError } from 'rxjs';
+import { catchError, EMPTY, filter, Observable, switchMap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { ResponseError } from '../interfaces/api.interface';
+import { ResponseError, ResponseException } from '../interfaces/api.interface';
 import { NotificationService } from '../services/notification.service';
 import { ErrorNotification } from '../../core/entities/notification/notification.error.model';
 
@@ -15,6 +15,12 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((err) => {
         if ([ResponseError.Unauthorized].includes(err.status)) {
           this.auth.logout();
+        }
+        if (
+          [ResponseError.InternalServer].includes(err.status) &&
+          ResponseException.SignatureHasExpired === err.error.exception
+        ) {
+          this.auth.updateToken();
         }
         this.notification.push(new ErrorNotification(err.error));
         return EMPTY;

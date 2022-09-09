@@ -1,8 +1,9 @@
-export class Component {
-  constructor(
-    public id: string,
-    public createdAt: Date,
-    public updatedAt: Date,
-    public message: string,
-  ) {}
+import { Attribute, JsonApiModel, JsonApiModelConfig } from 'angular2-jsonapi';
+
+@JsonApiModelConfig({
+  type: 'component'
+})
+export class Component extends JsonApiModel {
+  @Attribute()
+  createdAt!: Date;
 }

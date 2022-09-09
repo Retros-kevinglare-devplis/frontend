@@ -1,11 +1,23 @@
+import { Attribute, BelongsTo, JsonApiModel, JsonApiModelConfig } from 'angular2-jsonapi';
 import { User } from './user';
+import { Team } from './team';
 
-export class Collaborator {
-  constructor(
-    public id: string,
-    public user: User | undefined,
-    public status: string,
-    public createdAt: Date,
-    public updatedAt: Date,
-  ) {}
+@JsonApiModelConfig({
+  type: 'collaborator',
+})
+export class Collaborator extends JsonApiModel {
+  @Attribute()
+  status!: string;
+
+  @Attribute()
+  createdAt!: Date;
+
+  @Attribute()
+  updatedAt!: Date;
+
+  @BelongsTo()
+  user!: User;
+
+  @BelongsTo()
+  team!: Team;
 }
