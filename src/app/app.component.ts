@@ -23,9 +23,7 @@ export class AppComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.isAuth = !!this.auth.token;
-    if (this.isAuth) {
-      this.username = this.auth.username
-    }
+    this.username = this.auth.username
   }
 
   logout(): void {

@@ -25,7 +25,7 @@ export class SignInDatasourceService {
         filter((next) => next.data.attributes.accessToken),
         tap((next) => {
           this.auth.token = next.data.attributes.accessToken;
-          this.auth.username = next.included[0].attributes.username // FIXME: нужно править
+          this.auth.username = next.included[0].attributes.username //FIXME: нужно править, прикрутичивать jsonapi парсер, не понятно, как в сторе хранить объект (сейчас там строка или null)
         }),
       )
   }
