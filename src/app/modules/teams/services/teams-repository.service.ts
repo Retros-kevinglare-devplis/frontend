@@ -32,6 +32,7 @@ export class TeamsRepositoryService extends BaseComponent {
         new Team(
           team.id,
           team.attributes.title,
+          team.attributes.description,
           team.attributes.createdAt,
           team.attributes.updatedAt,
         ),

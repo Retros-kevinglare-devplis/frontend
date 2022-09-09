@@ -23,9 +23,9 @@ export class SignUpDatasourceService {
       })
       .pipe(
         filter((next) => next.data.attributes.accessToken),
-        map((next) => next.data.attributes.accessToken),
-        tap((jwt) => {
-          this.auth.token = jwt;
+        tap((next) => {
+          this.auth.token = next.data.attributes.accessToken;
+          this.auth.username = next.included[0].attributes.username //FIXME: нужно править, прикрутичивать jsonapi парсер, не понятно, как в сторе хранить объект (сейчас там строка или null)
         }),
       );
   }

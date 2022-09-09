@@ -17,11 +17,13 @@ export class AppComponent extends BaseComponent implements OnInit {
   }
 
   isAuth = false;
+  username = 'usernme'
 
   routerLinks = RouterPath;
 
   ngOnInit() {
     this.isAuth = !!this.auth.token;
+    this.username = this.auth.username
   }
 
   logout(): void {

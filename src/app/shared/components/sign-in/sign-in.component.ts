@@ -6,6 +6,7 @@ import { RouterPath } from '../../../core/constants/router-path.enum';
 import { SignInDatasourceService } from './services/sign-in-datasource.service';
 import { BaseComponent } from '../base/base.component';
 import { takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,7 @@ import { takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent extends BaseComponent {
-  constructor(public formService: SignInFormService, private api: SignInDatasourceService) {
+  constructor(public formService: SignInFormService, private api: SignInDatasourceService, private router: Router) {
     super();
     this.form = this.formService.create();
   }
@@ -25,9 +26,9 @@ export class SignInComponent extends BaseComponent {
   routerLinks = RouterPath;
 
   signIn() {
-    const isValidSignUpForm = this.form.valid;
-    if (isValidSignUpForm) {
-      this.api.signIn(this.form).pipe(takeUntil(this.ngUnsubscribe$)).subscribe();
+    const isValidSignInForm = this.form.valid;
+    if (isValidSignInForm) {
+      this.api.signIn(this.form).pipe(takeUntil(this.ngUnsubscribe$)).subscribe(() => this.router.navigate([this.routerLinks.Teams])); //FIXME: пытался сделать редирект на teams после авторизации
     }
   }
 }
