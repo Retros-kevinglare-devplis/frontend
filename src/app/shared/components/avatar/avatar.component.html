@@ -1,0 +1,24 @@
+<ng-container *ngIf="isSingleUser; else userCounter">
+  <ng-container *ngIf="user && user.firstName && user.lastName && !count; else noIcon">
+      <span class="avatar rounded-circle d-flex justify-content-center align-items-center">
+        <span class="text-uppercase">{{ user.firstName | firstLetter }}</span>
+        <span class="text-uppercase">{{ user.lastName | firstLetter }}</span>
+      </span>
+  </ng-container>
+</ng-container>
+
+<ng-template #userCounter>
+  <ng-container *ngIf="count">
+  <span class="avatar rounded-circle d-flex justify-content-center align-items-center">
+    <span class="text-uppercase">
+      {{ count }}+
+    </span>
+  </span>
+  </ng-container>
+</ng-template>
+
+<ng-template #noIcon>
+  <span class="avatar rounded-circle d-flex justify-content-center align-items-center">
+    <i class="bi bi-person"></i>
+  </span>
+</ng-template>

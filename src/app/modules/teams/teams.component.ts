@@ -6,8 +6,8 @@ import { BehaviorSubject, takeUntil, tap } from 'rxjs';
 import { Team } from '../../shared/models/team';
 import { JsonApiQueryData } from 'angular2-jsonapi';
 
-const teamColours = ["blue", "orange", "green", "red", "purple", "pink"]
-const teamColoursLength = teamColours.length
+const teamColours = ['blue', 'orange', 'green', 'red', 'purple', 'pink'];
+const teamColoursLength = teamColours.length;
 
 @Component({
   selector: 'app-teams',
@@ -20,7 +20,7 @@ export class TeamsComponent extends BaseComponent implements OnInit {
   constructor(private router: Router, private ds: TeamsDatasourceService) {
     super();
     this.title = 'My Teams';
-    this.description = "teams description"
+    this.description = 'teams description';
   }
 
   teams$ = new BehaviorSubject<Team[]>([]);
@@ -33,17 +33,10 @@ export class TeamsComponent extends BaseComponent implements OnInit {
 
   colorClass(i: number): string {
     if (i < teamColoursLength) {
-      return teamColours[i]
+      return teamColours[i];
     } else {
-      return teamColours[teamColoursLength % i]
+      return teamColours[teamColoursLength % i];
     }
-  }
-
-  moreCollaborators(index: number, length: number): number {
-    if (index >= this.maxCollaborators && length - 1 === index) {
-      return length - this.maxCollaborators;
-    }
-    return 0;
   }
 
   private getTeams(): void {

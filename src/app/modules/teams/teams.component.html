@@ -19,32 +19,17 @@
 <section id="teams" class="teams">
   <div class="container aos-init aos-animate" data-aos="fade-up">
     <div class="row gy-4">
-      <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" *ngFor="let team of teams$ | async; index as i">
+      <div
+        class="col-lg-4 col-md-6 aos-init aos-animate"
+        data-aos="fade-up"
+        data-aos-delay="200"
+        *ngFor="let team of teams$ | async; index as i"
+      >
         <a class="card" [routerLink]="team.id">
           <div class="team-box {{colorClass(i)}}">
             <div class="row mb-3">
               <div class="col">
-                <div class="d-flex more-avatars justify-content-center">
-                  <div *ngFor="let collaborator of team.collaborators; let i = index">
-                    <span
-                      *ngIf="i < maxCollaborators"
-                      class="avatar rounded-circle d-flex justify-content-center align-items-center">
-                      <ng-container
-                        *ngIf="collaborator?.user?.firstName && collaborator?.user?.lastName; else noIcon">
-                        <span class="text-uppercase">{{ collaborator.user.firstName | firstLetter }}</span>
-                        <span class="text-uppercase">{{ collaborator.user.lastName | firstLetter }}</span>
-                      </ng-container>
-                    </span>
-                    <span
-                      class="avatar rounded-circle d-flex justify-content-center align-items-center"
-                      *ngIf="moreCollaborators(i, team.collaborators.length) as more"
-                    >
-                      <span class="text-uppercase">
-                        {{ more }}+
-                      </span>
-                    </span>
-                  </div>
-                </div>
+                <app-avatar-group [collaborators]="team.collaborators"></app-avatar-group>
               </div>
             </div>
             <h3>{{team.title | titlecase}}</h3>
