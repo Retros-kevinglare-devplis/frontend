@@ -36,7 +36,7 @@
 <section *ngIf="(isNewTeam$ | async) === false; else newTeam">
   <form *ngIf="(team$ | async) as team" [formGroup]="formService.form">
       <div class="row">
-        <div class="col">
+        <div class="col-6">
           <mat-form-field class="w-100 my-2" appearance="fill">
             <mat-label>Name</mat-label>
             <input type="text" matInput formControlName="title" placeholder="Ex. My team">
@@ -50,12 +50,10 @@
               <h4 class="text-muted">Collaborators</h4>
             </div>
             <div class="col-12 mb-4" *ngFor="let collaborator of team.collaborators">
-              <div class="card bg-primary text-white border-0">
-                <div class="card-body">
-                  <h3 class="card-title text-capitalize">{{collaborator.user.firstName}}</h3>
-                  <div class="card-text">
-
-                  </div>
+              <div class="d-flex align-items-center gap-2">
+              <app-avatar [user]="collaborator.user"></app-avatar>
+                <div *ngIf="collaborator.user && collaborator.user.email">
+                  {{ collaborator.user.email }}
                 </div>
               </div>
             </div>
