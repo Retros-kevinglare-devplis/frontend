@@ -52,7 +52,6 @@ export class TeamsComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.teams$.subscribe((d) => console.log(d));
     this.getTeams();
   }
 }

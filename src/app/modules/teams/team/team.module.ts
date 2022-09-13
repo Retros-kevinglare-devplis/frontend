@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewTeamComponent } from './new-team/new-team.component';
 import { AvatarModule } from '../../../shared/components/avatar/avatar.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [TeamComponent, NewTeamComponent],
@@ -17,6 +19,8 @@ import { AvatarModule } from '../../../shared/components/avatar/avatar.module';
     MatInputModule,
     ReactiveFormsModule,
     AvatarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class TeamModule {}

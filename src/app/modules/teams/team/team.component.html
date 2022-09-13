@@ -49,32 +49,38 @@
             <div class="col-12">
               <h4 class="text-muted">Collaborators</h4>
             </div>
-            <div class="col-12 mb-4" *ngFor="let collaborator of team.collaborators">
+            <div class="col mb-4" *ngFor="let collaborator of team.collaborators">
               <div class="d-flex align-items-center gap-2">
               <app-avatar [user]="collaborator.user"></app-avatar>
-                <div *ngIf="collaborator.user && collaborator.user.email">
-                  {{ collaborator.user.email }}
+                <div class="row">
+                  <div class="col-12 text-primary" *ngIf="collaborator.user && collaborator.user.username">
+                    @{{ collaborator.user.username }}
+                  </div>
+                  <div class="col-12 text-muted small" *ngIf="collaborator.user && collaborator.user.email">
+                    {{ collaborator.user.email }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-6">
-          <div class="row">
-            <div class="col-12">
-              <h4 class="text-muted">Retros</h4>
-            </div>
-            <div class="col-12 mb-4" *ngFor="let retro of team.retros">
-              <div class="card bg-warning border-0">
-                <div class="card-body">
-                  <h3 class="card-title text-capitalize">{{retro.createdAt}}</h3>
-                  <div class="card-text">
+          <mat-calendar></mat-calendar>
+<!--          <div class="row">-->
+<!--            <div class="col-12">-->
+<!--              <h4 class="text-muted">Retros</h4>-->
+<!--            </div>-->
+<!--            <div class="col-12 mb-4" *ngFor="let retro of team.retros">-->
+<!--              <div class="card bg-warning border-0">-->
+<!--                <div class="card-body">-->
+<!--                  <h3 class="card-title text-capitalize">{{retro.createdAt}}</h3>-->
+<!--                  <div class="card-text">-->
 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </form>

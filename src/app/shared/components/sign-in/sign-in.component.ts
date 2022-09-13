@@ -36,7 +36,7 @@ export class SignInComponent extends BaseComponent {
         .signIn(this.form)
         .pipe(takeUntil(this.ngUnsubscribe$))
         .subscribe(() => {
-          this.router.navigate(['/teams']);
+          this.router.navigate([RouterPath.Teams]);
         });
     }
   }

@@ -3,6 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { BaseComponent } from '../../../../shared/components/base/base.component';
 import { takeUntil, tap } from 'rxjs';
 import { NewTeamDatasourceService } from './services/new-team-datasource.service';
+import { Router } from '@angular/router';
+import { RouterPath } from '../../../../core/constants/router-path.enum';
 
 @Component({
   selector: 'app-new-team',
@@ -12,7 +14,7 @@ import { NewTeamDatasourceService } from './services/new-team-datasource.service
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewTeamComponent extends BaseComponent implements OnInit {
-  constructor(private datasource: NewTeamDatasourceService) {
+  constructor(private datasource: NewTeamDatasourceService, private router: Router) {
     super();
   }
   @Output() teamName = new EventEmitter();
@@ -32,7 +34,9 @@ export class NewTeamComponent extends BaseComponent implements OnInit {
 
   create() {
     if (this.titleControl.value) {
-      this.datasource.set(this.titleControl.value).subscribe((d) => console.log(d));
+      this.datasource.set(this.titleControl.value).subscribe((team) => {
+        this.router.navigate([RouterPath.Teams, team.id]);
+      });
     }
   }
 }

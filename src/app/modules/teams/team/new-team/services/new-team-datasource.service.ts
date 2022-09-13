@@ -8,10 +8,6 @@ export class NewTeamDatasourceService {
   constructor(private datastore: DatastoreService) {}
 
   set(title: string): Observable<Team> {
-    return this.datastore
-      .createRecord(Team, {
-        title,
-      })
-      .save();
+    return this.datastore.createRecord(Team, { title }).save();
   }
 }
