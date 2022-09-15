@@ -1,4 +1,4 @@
-export const ApiVersion = 'api/v1/';
+export const ApiVersion = 'http://localhost:9292/api/v1/';
 
 export enum ApiRoutes {
   SignUp = '/users/sign_up',

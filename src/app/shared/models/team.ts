@@ -12,7 +12,10 @@ export class Team extends JsonApiModel implements ITeam {
   title!: string;
 
   @Attribute()
-  description!: string;
+  description!: string | null;
+
+  @Attribute()
+  imageURL!: string | null;
 
   @Attribute()
   createdAt!: Date;
