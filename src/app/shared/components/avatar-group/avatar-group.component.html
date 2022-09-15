@@ -1,0 +1,10 @@
+<div class="d-flex more-avatars justify-content-center">
+  <div *ngFor="let collaborator of collaborators; let i = index">
+    <ng-container *ngIf="i < maxCollaborators">
+      <app-avatar [user]="collaborator.user"></app-avatar>
+    </ng-container>
+    <ng-container *ngIf="moreCollaborators(i, collaborators.length) as count">
+      <app-avatar [count]="count" [isSingleUser]="false"></app-avatar>
+    </ng-container>
+  </div>
+</div>

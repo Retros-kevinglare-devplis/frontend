@@ -16,7 +16,11 @@
         </mat-form-field>
       </div>
       <div class="col-12 text-end">
-        <button [disabled]="titleControl.invalid" class="btn btn-outline-success">
+        <button
+          [disabled]="titleControl.invalid"
+          (click)="create()"
+          class="btn btn-outline-success"
+        >
           Create
         </button>
       </div>

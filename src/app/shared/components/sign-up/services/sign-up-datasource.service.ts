@@ -18,8 +18,12 @@ export class SignUpDatasourceService {
   signUp(form: FormGroup<SignUpModel>): Observable<any> {
     return this.http
       .post<any>(ApiVersion + ApiRoutes.SignUp, {
-        ...form.getRawValue(),
-        fingerprint: this.storage.fingerprint$.getValue(),
+        data: {
+          attributes: {
+            ...form.getRawValue(),
+            fingerprint: this.storage.fingerprint$.getValue(),
+          },
+        },
       })
       .pipe(
         filter((next) => next.data.attributes.accessToken),

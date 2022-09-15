@@ -19,8 +19,12 @@ export class SignInDatasourceService {
   signIn(form: FormGroup<SignInModel>): Observable<any> {
     return this.http
       .post<any>(environment.api + ApiRoutes.SignIn, {
-        ...form.getRawValue(),
-        fingerprint: this.storage.fingerprint$.getValue(),
+        data: {
+          attributes: {
+            ...form.getRawValue(),
+            fingerprint: this.storage.fingerprint$.getValue(),
+          },
+        },
       })
       .pipe(
         filter((next) => next.data.attributes.accessToken),
