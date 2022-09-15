@@ -13,7 +13,7 @@ import { AuthService } from './shared/services/auth.service';
 export class AppComponent extends BaseComponent {
   constructor(public notification: NotificationService, public auth: AuthService) {
     super();
-    this.title = 'Retros';
+    this.title = 'RetroSprint';
   }
 
   isAuth = false;

@@ -6,7 +6,7 @@
 <header id="header" class="header">
   <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     <a href="/" class="logo d-flex align-items-center">
-      <span><i class="bi bi-card-text px-2"></i> RetroSprint</span>
+      <span><i class="bi bi-card-text px-2"></i>{{ title }}</span>
     </a>
     <nav id="navbar" class="navbar">
       <ul *ngIf="!isAuth">
@@ -35,7 +35,7 @@
     </nav>
   </div>
 </header>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 <app-notification
   [notification]="notification.pull() | async"
 ></app-notification>
