@@ -1,0 +1,94 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+
+@mixin calendar-item-hover-add-icon($icon-content) {
+  color: transparent;
+
+  &::before {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: 'bootstrap-icons' !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: $icon-content;
+  }
+}
+
+.new-collaborator:hover {
+  ::ng-deep app-avatar .new-user {
+    background: $blue;
+
+    i {
+      color: white;
+    }
+  }
+}
+
+.avatar {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+
+::ng-deep mat-calendar {
+  .mat-calendar-header {
+    padding-top: 0;
+
+    .mat-calendar-controls {
+      margin-top: 0;
+    }
+  }
+
+  :not(.retroDate) {
+    .mat-calendar-body-cell:hover {
+      .mat-calendar-body-cell-content {
+        @include calendar-item-hover-add-icon('\F64D')
+      }
+    }
+    &.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>
+    .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical)
+    {
+      background: $primary;
+    }
+  }
+
+  .retroDate {
+    &.mat-calendar-body-cell:hover {
+      .mat-calendar-body-cell-content {
+        @include calendar-item-hover-add-icon('\F78B')
+      }
+    }
+    .mat-calendar-body-cell-content  {
+      background: darkblue;
+      border-radius: 0;
+      color: white;
+    }
+    &.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>
+    .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical)
+    {
+      background: $danger;
+    }
+  }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical)
+  {
+    border-radius: 0;
+    background: aliceblue;
+    border-color: transparent;
+  }
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>
+  .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    border-radius: 0;
+  }
+}

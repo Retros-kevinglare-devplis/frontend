@@ -10,6 +10,8 @@ import { User } from '../../models/user';
 export class AvatarComponent {
   @Input() user: User | undefined;
 
+  @Input() isNewUser = false;
+
   @Input() isSingleUser = true;
 
   @Input() count = 0;

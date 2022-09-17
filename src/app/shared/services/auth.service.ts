@@ -32,8 +32,12 @@ export class AuthService {
   updateToken(): void {
     this.http
       .post<any>(environment.api + ApiRoutes.RefreshToken, {
-        refresh_token: this.refresh,
-        fingerprint: this.storage.fingerprint$.getValue(),
+        data: {
+          attributes: {
+            refresh_token: this.refresh,
+            fingerprint: this.storage.fingerprint$.getValue(),
+          },
+        },
       })
       .pipe(
         filter((next) => next.data.attributes.accessToken),

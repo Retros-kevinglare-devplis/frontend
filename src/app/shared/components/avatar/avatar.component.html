@@ -1,9 +1,11 @@
-<ng-container *ngIf="isSingleUser; else userCounter">
-  <ng-container *ngIf="user && user.firstName && user.lastName && !count; else noIcon">
-      <span class="avatar rounded-circle d-flex justify-content-center align-items-center">
-        <span class="text-uppercase">{{ user.firstName | firstLetter }}</span>
-        <span class="text-uppercase">{{ user.lastName | firstLetter }}</span>
-      </span>
+<ng-container *ngIf="!isNewUser; else newUser">
+  <ng-container *ngIf="isSingleUser; else userCounter">
+    <ng-container *ngIf="user && user.firstName && user.lastName && !count; else noIcon">
+        <span class="avatar rounded-circle d-flex justify-content-center align-items-center">
+          <span class="text-uppercase">{{ user.firstName | firstLetter }}</span>
+          <span class="text-uppercase">{{ user.lastName | firstLetter }}</span>
+        </span>
+    </ng-container>
   </ng-container>
 </ng-container>
 
@@ -15,6 +17,12 @@
     </span>
   </span>
   </ng-container>
+</ng-template>
+
+<ng-template #newUser>
+  <span class="avatar rounded-circle d-flex justify-content-center align-items-center new-user">
+    <i class="bi bi-plus-lg"></i>
+  </span>
 </ng-template>
 
 <ng-template #noIcon>

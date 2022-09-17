@@ -286,6 +286,13 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/material-moment-adapter@^14.2.2":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-14.2.2.tgz#65fb886ec3f8026553b9d7ef02d5722d9051ede1"
+  integrity sha512-EOnchBkcICJQXYcXEk+4FSgQXllhJAfE56rkeCDS0r0iFe+zdM4da6JseBQPIKMraYXcnuDnMC1Q2cjVMggn+A==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/material@^14.1.0":
   version "14.2.0"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-14.2.0.tgz#915a39bd7c6434ac2465964abb93cecd6034e5d7"
@@ -2656,14 +2663,6 @@ autoprefixer@^10.4.8:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-axios@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
-
 axobject-query@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-3.0.1.tgz#160e20533a7010db37726df68b7faf7db9653acd"
@@ -3515,11 +3514,6 @@ detect-node@^2.0.4:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
-
-dexie@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/dexie/-/dexie-2.0.4.tgz#6027a5e05879424e8f9979d8c14e7420f27e3a11"
-  integrity sha512-aQ/s1U2wHxwBKRrt2Z/mwFNHMQWhESerFsMYzE+5P5OsIe5o1kgpFMWkzKTtkvkyyEni6mWr/T4HUJuY9xIHLA==
 
 diff-sequences@^28.1.1:
   version "28.1.1"
@@ -4525,7 +4519,7 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.9:
+follow-redirects@^1.0.0:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
   integrity sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==
@@ -5986,7 +5980,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17, lodash-es@^4.17.15:
+lodash-es@^4.17.15:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
@@ -6261,6 +6255,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6317,14 +6316,6 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
-
-ngx-jsonapi@^3.0.0-dev:
-  version "3.0.0-dev"
-  resolved "https://registry.yarnpkg.com/ngx-jsonapi/-/ngx-jsonapi-3.0.0-dev.tgz#e3fbd096e5433b1f62382b2b7542588220d09c0b"
-  integrity sha512-fsaNXJ2bLorPrDTpHByt4n7M+YusDB229Q9Ohmm/I82ueVXQcpobEa2rpXBP0ClJrgpvXYOK1GNN83s1mkx30w==
-  dependencies:
-    dexie "^2.0.4"
-    lodash-es "^4.17"
 
 nice-napi@^1.0.2:
   version "1.0.2"
