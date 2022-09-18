@@ -21,12 +21,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: $icon-content;
+    @content;
   }
 }
 
 .new-collaborator:hover {
   ::ng-deep app-avatar .new-user {
     background: $blue;
+    border-color: transparent;
 
     i {
       color: white;
@@ -34,9 +36,22 @@
   }
 }
 
-.avatar {
-  &:hover {
-    cursor: pointer;
+.avatar:hover {
+  cursor: pointer;
+}
+
+.avatar-removable:hover {
+  ::ng-deep app-avatar {
+    .avatar {
+      @include calendar-item-hover-add-icon('\F78B') {
+        font-size: 1rem;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: $danger;
+      }
+    }
   }
 }
 
